@@ -11,18 +11,18 @@ function generate_token() {
     return md5(microtime().mt_rand());
 }
 
-$options = [
-    'salt' => generate_token(), //write your own code to generate a suitable salt
-    'cost' => 12 // the default cost is 10
-];
+// $options = [
+//     'salt' => generate_token(),
+//     'cost' => 12
+// ];
 
 // 
-$salt = $options["salt"];
-$hash = password_hash($password, PASSWORD_DEFAULT, $options);
+$salt = generate_token();
+// $hash = password_hash($password, PASSWORD_DEFAULT, $options);
 
 
 // Chèn dữ liệu vào
-$sql = "INSERT INTO tmp_users(username, password, email, salt) VALUES ('$username', '$hash', '$email', '$salt')";
+$sql = "INSERT INTO users(username, password, email, salt, level, status) VALUES ('$username', '$password', '$email', '$salt', '1', '0')";
 $result = mysqli_query($conn, $sql);
 
 
@@ -36,7 +36,7 @@ if ($result) {
     // From
     $header = "From: Admin <dangkhai.info@gmail.com>";
     $message = "Click on the link to activate your account: ";
-    $message .= "http://localhost:81/dangkhai/btl2-master/confirmation.php?user=$username&salt=$salt";
+    $message .= "http://localhost:81/dangkhai/BTLKHAIDAT/confirmation.php?user=$username&salt=$salt";
 
     // Gủi mail
     $sentmail = mail($to,$subject,$message,$header);

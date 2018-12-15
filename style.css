@@ -1,0 +1,44 @@
+/* ie , firefox,chrome,..*/
+*{
+padding: 0px;
+margin: 0px;
+}
+body{
+width: 800px;
+margin: auto;
+}
+a{
+text-decoration: none;
+}
+a:hover{
+text-decoration: underline;
+}
+#top{
+height: 100px;
+text-align: center;
+background-color: blue;
+line-height: 100px;
+padding: 5%;
+
+
+}
+ul{
+ list-style-type: none;
+}
+#menu{
+margin-top: 8px;
+
+}
+#menu li{
+    float:left;
+    width: 199px;
+    border-right: 1px solid white;
+    text-align: center;
+    line-height: 30px;
+    background:blue;
+
+}
+#menu a{
+    color:white;
+    font-weight: bold;
+}
