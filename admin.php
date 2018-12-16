@@ -2,7 +2,9 @@
 session_start();
 if($_SESSION["level"]==2)
 {
-    require("headeradmin.php");
+    header("location:headeradmin.php");
+    exit();
+    
 }
 else{
     header("location:index.php");

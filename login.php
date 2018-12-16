@@ -16,7 +16,7 @@ if (isset($_POST["login"])) {
 
 			$level = $data["level"];
 
-			if ($level == 2 && $password == $data["password"]) {
+			if ($level == 2 &&(password_verify($password, $data["password"]))) {
 				 header("location:headeradmin.php");
 				 exit();
 			} else if (password_verify($password, $data["password"])) {
