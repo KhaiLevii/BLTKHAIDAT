@@ -29,29 +29,33 @@
             <tr style="background:blue;color:white;">
                 <th>STT</th>
                 <th>Username</th>
-                <th>Email</th>
-                <th>Level</th>
-                <th>Delete</th>
+                <th>Messeage</th>
+                <th style="width:50px;">Link</th>
+                <th style="width:80px;">Kiểm duyệt</th>
+                <th style="width:80px;">Delete</th>
             </tr>
             <tr >
                 <td>1</td>
-                <td>jungerlove</td>
-                <td>khaidd62@wru.vn</td>
-                <td>Admin</td>
+                <td>huydat58th1</td>
+                <td>Game cực hay ngàn like cho admin</td>
+                <td><a href="#" style="color:blue;">Xem</a></td>
+                <td><a href="#" style="color:blue;" >False</a></td>
                 <td><a href="#" style="color:blue;">Delete</a></td>
             </tr>
             <tr >
-                <td>2</td>
-                <td>jungerlove12</td>
-                <td>dangkhai.info@gmail.com</td>
-                <td>Thành Viên</td>
+            <td>2</td>
+                <td>domanhchinh58th1</td>
+                <td>Game cực hay ngàn like cho admin</td>
+                <td><a href="#" style="color:blue;">Xem</a></td>
+                <td><a href="#" style="color:blue;">False</a></td>
                 <td><a href="#" style="color:blue;">Delete</a></td>
             </tr>
             <tr >
-                <td>3</td>
-                <td>dauducmanh</td>
-                <td>manhdd62@wru.vn</td>
-                <td>Thành Viên</td>
+            <td>3</td>
+                <td>duongvutroll</td>
+                <td>Game cực hay ngàn like cho admin</td>
+                <td><a href="#" style="color:blue;">Xem</a></td>
+                <td><a href="#" style="color:blue;">False</a></td>
                 <td><a href="#" style="color:blue;">Delete</a></td>
             </tr>
         </table>

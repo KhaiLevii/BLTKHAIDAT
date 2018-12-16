@@ -66,7 +66,7 @@
                                     <?php
                                         if (isset($_SESSION["username"])) {
                                             echo '<li class="nav-item active">';
-                                                echo "<div class='nav-link'>Xin chào".$_SESSION['username']."</div>";
+                                                echo "<div class='nav-link'>Xin chào ".$_SESSION['username']."</div>";
                                             echo "</li>";
                                             echo "<li class='nav-item active'>";
                                                 echo '<a class="nav-link" href="logout.php">Logout</a>';

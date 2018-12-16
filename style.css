@@ -42,3 +42,26 @@ margin-top: 8px;
     color:white;
     font-weight: bold;
 }
+#wrapper table{
+border-collapse: collapse;
+margin-top:20px;
+width: 800px;
+text-align: center;
+}
+#wrapper table tr{
+    border: 1px solid blue;
+    line-height: 30px;
+
+}
+
+#wrapper table td{
+    border: 1px solid blue;
+}
+#bottom{
+    height: 40px;
+    background: blue;
+    line-height: 40px;
+    text-align: center;
+    color: white;
+    margin-top: 10px;
+}

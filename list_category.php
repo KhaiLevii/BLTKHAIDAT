@@ -26,32 +26,32 @@
     <br>
     <div id="wrapper">
         <table>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2"><a href="#" style="color:blue;">Thêm chuyên mục</a></td>
+            </tr>
             <tr style="background:blue;color:white;">
                 <th>STT</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Level</th>
+                <th>Chuyên mục</th>
+                <th>Edit</th>
                 <th>Delete</th>
             </tr>
-            <tr >
+            <tr>
                 <td>1</td>
-                <td>jungerlove</td>
-                <td>khaidd62@wru.vn</td>
-                <td>Admin</td>
+                <td>Hành Động</td>
+                <td><a href="#" style="color:blue;">Edit</a></td>
                 <td><a href="#" style="color:blue;">Delete</a></td>
             </tr>
-            <tr >
+            <tr>
                 <td>2</td>
-                <td>jungerlove12</td>
-                <td>dangkhai.info@gmail.com</td>
-                <td>Thành Viên</td>
+                <td>Phiêu lưu</td>
+                <td><a href="#" style="color:blue;">Edit</a></td>
                 <td><a href="#" style="color:blue;">Delete</a></td>
             </tr>
-            <tr >
+            <tr>
                 <td>3</td>
-                <td>dauducmanh</td>
-                <td>manhdd62@wru.vn</td>
-                <td>Thành Viên</td>
+                <td>Thể thao</td>
+                <td><a href="#" style="color:blue;">Edit</a></td>
                 <td><a href="#" style="color:blue;">Delete</a></td>
             </tr>
         </table>

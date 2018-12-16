@@ -26,32 +26,36 @@
     <br>
     <div id="wrapper">
         <table>
+            <tr>
+                <td colspan="3"></td>
+                <td colspan="2"><a href="#" style="color:blue;">Thêm bài viết</a></td>
+            </tr>
             <tr style="background:blue;color:white;">
                 <th>STT</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Level</th>
+                <th>Chuyên mục</th>
+                <th>Tựa đề bài viết</th>
+                <th>Edit</th>
                 <th>Delete</th>
             </tr>
-            <tr >
+            <tr>
                 <td>1</td>
-                <td>jungerlove</td>
-                <td>khaidd62@wru.vn</td>
-                <td>Admin</td>
+                <td>Hành động</td>
+                <td>Siêu phẩm Call of Duty WW2</td>
+                <td><a href="#">Edit</a></td>
                 <td><a href="#" style="color:blue;">Delete</a></td>
             </tr>
-            <tr >
+            <tr>
                 <td>2</td>
-                <td>jungerlove12</td>
-                <td>dangkhai.info@gmail.com</td>
-                <td>Thành Viên</td>
+                <td>Thể Thao</td>
+                <td>Siêu phẩm Fifa 19</td>
+                <td><a href="#">Edit</a></td>
                 <td><a href="#" style="color:blue;">Delete</a></td>
             </tr>
-            <tr >
+            <tr>
                 <td>3</td>
-                <td>dauducmanh</td>
-                <td>manhdd62@wru.vn</td>
-                <td>Thành Viên</td>
+                <td>Phiêu lưu</td>
+                <td>Siêu phẩm Tomb raider 2013</td>
+                <td><a href="#">Edit</a></td>
                 <td><a href="#" style="color:blue;">Delete</a></td>
             </tr>
         </table>
