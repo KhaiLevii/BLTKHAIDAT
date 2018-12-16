@@ -17,9 +17,8 @@ if (isset($_POST["login"])) {
 			$level = $data["level"];
 
 			if ($level == 2 && $password == $data["password"]) {
-				// chưa có trang admin
-				// header("location:admin/admin.php");
-				// exit();
+				 header("location:headeradmin.php");
+				 exit();
 			} else if (password_verify($password, $data["password"])) {
 				$_SESSION["username"] = $username;
 				header("location:index.php");
