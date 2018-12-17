@@ -60,7 +60,7 @@ require("header.php");
 				</div>
 			</div>
 			<div class="form-group">
-			<?php
+				<?php
 				if (isset($error)) {
 					echo "<p class='bg-danger error'>$error</p>";
 				}

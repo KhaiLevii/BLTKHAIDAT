@@ -12,27 +12,22 @@ require("headeradmin.php");
                 <th>Level</th>
                 <th>Delete</th>
             </tr>
-            <tr >
-                <td>1</td>
-                <td>jungerlove</td>
-                <td>khaidd62@wru.vn</td>
-                <td>Admin</td>
-                <td><a href="#" style="color:blue;">Delete</a></td>
-            </tr>
-            <tr >
-                <td>2</td>
-                <td>jungerlove12</td>
-                <td>dangkhai.info@gmail.com</td>
-                <td>Thành Viên</td>
-                <td><a href="#" style="color:blue;">Delete</a></td>
-            </tr>
-            <tr >
-                <td>3</td>
-                <td>dauducmanh</td>
-                <td>manhdd62@wru.vn</td>
-                <td>Thành Viên</td>
-                <td><a href="#" style="color:blue;">Delete</a></td>
-            </tr>
+            <?php
+            // mở kết nối csdl
+            require("config.php");
+            // thực hiện câu truy vấn
+           $result =mysql_query("select  username,email,level from users");
+           $data =mysql_fetch_assoc($result);      //$data=array("username"=>"...", "email"=>"..." , "level"=>"...");
+              echo   "<tr>";
+              echo  "<td>1</td>";
+              echo  "<td>$data[username]</td>";
+              echo  "<td>$data[email]</td>";
+              echo  "<td>Admin</td>";
+              echo   "<td><a href='#' style='color:blue;'>Delete</a></td>";
+               echo "</tr>";
+               // đóng kết nối 
+               mysql_close($conn) ;
+            ?>        
         </table>
     </div>
     <div id="bottom">Copyright &copy; by sharing game to you</div>
