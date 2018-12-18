@@ -7,6 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome admin</title>
     <link rel="stylesheet" href="style.css">
+    <script language="javascript">
+    function show_confirm()
+    {
+        if(confirm("bạn có muốn xoá tài khoản này không?"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    </script>
 
 </head>
 

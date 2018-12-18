@@ -36,7 +36,7 @@ if ($result) {
     // From
     $header = "From: Admin <dangkhai.info@gmail.com>";
     $message = "Click on the link to activate your account: ";
-    $message .= "http://localhost:81/dangkhai/BTLKHAIDAT/confirmation.php?user=$username&salt=$salt";
+    $message .= "http://localhost:81/dangkhai/BTLKHAIDAT/Sources/confirmation.php?user=$username&salt=$salt";
 
     // Gủi mail
     $sentmail = mail($to,$subject,$message,$header);
