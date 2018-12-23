@@ -7,7 +7,7 @@ require("headeradmin.php");
         <table>
             <tr>
                 <td colspan="2"></td>
-                <td colspan="2"><a href="#" style="color:blue;">Thêm chuyên mục</a></td>
+                <td colspan="2"><a href="add_category.php" style="color:blue;">Thêm chuyên mục</a></td>
             </tr>
             <tr style="background:blue;color:white;">
                 <th>STT</th>
@@ -15,24 +15,22 @@ require("headeradmin.php");
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Hành Động</td>
-                <td><a href="#" style="color:blue;">Edit</a></td>
-                <td><a href="#" style="color:blue;">Delete</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Phiêu lưu</td>
-                <td><a href="#" style="color:blue;">Edit</a></td>
-                <td><a href="#" style="color:blue;">Delete</a></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Thể thao</td>
-                <td><a href="#" style="color:blue;">Edit</a></td>
-                <td><a href="#" style="color:blue;">Delete</a></td>
-            </tr>
+            <?php
+            require("config.php");
+            $stt=1;
+            $result=mysqli_query($conn , "select cate_id,cate_title from category");
+            while ($data=mysqli_fetch_assoc($result))
+            {
+            echo "<tr>";
+                echo "<td>$stt</td>";
+                echo "<td>$data[cate_title]</td>";
+                echo "<td><a href='edit_category.php? id=$data[cate_id]'  style='color:blue;'>Edit</a></td>";   
+                echo "<td><a href='#' style='color:blue;'>Delete</a></td>";
+            echo "</tr>";
+            $stt++;
+            }
+            mysqli_close($conn);
+            ?>
         </table>
     </div>
     <div id="bottom">Copyright &copy; by sharing game to you</div>
