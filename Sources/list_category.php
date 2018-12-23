@@ -25,7 +25,7 @@ require("headeradmin.php");
                 echo "<td>$stt</td>";
                 echo "<td>$data[cate_title]</td>";
                 echo "<td><a href='edit_category.php? id=$data[cate_id]'  style='color:blue;'>Edit</a></td>";   
-                echo "<td><a href='#' style='color:blue;'>Delete</a></td>";
+                echo "<td><a href='delete_category.php?id=$data[cate_id]' onclick='return show_confirmcategory();' style='color:blue;'>Delete</a></td>";
             echo "</tr>";
             $stt++;
             }

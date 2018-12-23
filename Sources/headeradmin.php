@@ -20,6 +20,20 @@
         }
     }
     </script>
+     <script language="javascript">
+    function show_confirmcategory()
+    {
+        if(confirm("bạn có muốn xoá danh mục này không?"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    </script>
+    
 
 </head>
 

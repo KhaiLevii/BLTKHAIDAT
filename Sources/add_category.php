@@ -19,6 +19,8 @@ if(isset($_POST["ok"]))
         require("config.php");
         mysqli_query($conn , "insert into category(cate_title) value('$catename')");
         mysqli_close($conn);
+        header("location:list_category.php");
+        exit();
     }
 }
 ?>
