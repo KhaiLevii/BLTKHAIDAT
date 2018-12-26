@@ -46,16 +46,12 @@
                                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink"
                                             data-toggle="dropdown">DANH MỤC</a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <?php
-                                                require("config.php");
-                                                $result=mysqli_query($conn , "select cate_title from category");
-                                                while($data=mysqli_fetch_assoc($result))
-                                                     {
-                                                         echo   "<a class='dropdown-item' href='category.php'>$data[cate_title]</a> ";
-                                                     }
-                                                mysqli_close($conn);
-                            
-                                            ?>
+                                            <a class="dropdown-item" href="category.php">HÀNH ĐỘNG</a> <a class="dropdown-item"
+                                                href="# ">PHIÊU LƯU<U></U></a> <a class="dropdown-item" href="#">THỂ
+                                                THAO</a>
+                                            <a class="dropdown-item" href="support.php">SUPPORT</a>
+                                            <a class="dropdown-item" href="upload.php">YÊU CẦU UPLOAD</a>
+
 
                                         </div>
                                     </li>
