@@ -85,5 +85,64 @@
                         </nav>
                     </div>
                 </div>
+                <h1 style="text-align:center;">Game Hành Động</h1>
+                <br>
+                <br>
+                <br>
+            </div>
+            <!-- game list -->
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <img alt="Bootstrap Image Preview" src="cod2.jpeg" />
+                <a href="cod.php">Call of duty WW2</a>
+            </div>
+            <div class="col-md-4">
+                <img alt="Bootstrap Image Preview" src="msw.jpeg" />
+                <a href="">Shadow Of War</a>
             </div>
         </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <img alt="" src="tomraider.jpeg" />
+                <a href="">Tom Raider</a>
+            </div>
+            <div class="col-md-4">
+                <img alt="" src="ass.jpeg" />
+                <a href="">Assassin's Creed Syndicate</a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <nav>
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#">Previous</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="index.php">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">4</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">5</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+                <hr>
+                <div>

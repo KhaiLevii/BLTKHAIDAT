@@ -49,3 +49,4 @@
             <li><a href="list_comment.php">Quản lí bình luận</a></li>
         </ul>
     </div>
+    </body>

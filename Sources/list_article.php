@@ -7,7 +7,7 @@ require("headeradmin.php");
         <table>
             <tr>
                 <td colspan="3"></td>
-                <td colspan="2"><a href="#" style="color:blue;">Thêm bài viết</a></td>
+                <td colspan="2"><a href="add_article.php" style="color:blue;">Thêm bài viết</a></td>
             </tr>
             <tr style="background:blue;color:white;">
                 <th>STT</th>
@@ -42,7 +42,3 @@ require("headeradmin.php");
     <div id="bottom">Copyright &copy; by sharing game to you</div>
 
 
-
-</body>
-
-</html>
