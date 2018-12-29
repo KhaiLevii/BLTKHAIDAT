@@ -46,16 +46,12 @@
                                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink"
                                             data-toggle="dropdown">DANH MỤC</a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <?php
-                                                require("config.php");
-                                                $result=mysqli_query($conn , "select cate_title from category");
-                                                while($data=mysqli_fetch_assoc($result))
-                                                     {
-                                                         echo   "<a class='dropdown-item' href='gamehanhdong.php'>$data[cate_title]</a> ";
-                                                     }
-                                                mysqli_close($conn);
-                            
-                                            ?>
+                                            <a class="dropdown-item" href="gamehanhdong.php">HÀNH ĐỘNG</a> <a class="dropdown-item"
+                                                href="gamethethao.php ">PHIÊU LƯU<U></U></a> <a class="dropdown-item" href="#">THỂ
+                                                THAO</a>
+                                            <a class="dropdown-item" href="support.php">SUPPORT</a>
+                                            <a class="dropdown-item" href="upload.php">YÊU CẦU UPLOAD</a>
+
 
                                         </div>
                                     </li>
@@ -89,5 +85,57 @@
                         </nav>
                     </div>
                 </div>
+                <h1 style="text-align:center;">Game Thể Thao</h1>
+                <br>
+                <br>
+                <br>
             </div>
+            <!-- game list -->
         </div>
+        <div class="row">
+                <?php
+                    require("config.php");
+                    $result=mysqli_query($conn , "select title,image,introduce from news");
+                   while ($data=mysqli_fetch_assoc($result))
+                   {
+                    echo "<div class='col-md-4'>";
+                    echo " <img alt='Bootstrap Image Preview' src='$data[image]' />";
+                    echo  "<a href='cod.php'>$data[title]</a>";
+                    echo "</div>";
+                   }
+                  mysqli_close($conn);
+                ?>
+        
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <nav>
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#">Previous</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="index.php">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">4</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">5</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+                <hr>
+                <div>

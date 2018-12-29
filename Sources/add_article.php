@@ -1,8 +1,8 @@
 <?php
 require("headeradmin.php");
 $loi = array();
-$loi['title']=$loi['image']= $loi['introduce']=$loi['content']=NULL;
-$title=$image=$introduce=$content=NULL;
+$loi['title']=$loi['image']= $loi['introduce']=$loi['content']=$loi['download']=NULL;
+$title=$image=$introduce=$content=$download=NULL;
 if(isset($_POST["ok"]))
 {
     $cate_id=$_POST["txtcate"];
@@ -38,12 +38,21 @@ if(isset($_POST["ok"]))
         {
             $content=$_POST['txtcontent'];
         }
-    if (isset($title,$image,$introduce,$content))
+    if ($_POST['txtdownload']==NULL)
+        {
+            $loi['download']="* Xin vui lòng chèn link download <br/>";
+        }
+    else
+        {
+            $download=$_POST['txtdownload'];
+        }
+    if (isset($title,$image,$introduce,$content,$download))
         {
             require("config.php");
-            $insertData = "INSERT INTO news(title,image,introduce,content,cate_id) VALUES('$title','$image','$introduce','$content', '$cate_id')";
+            $insertData = "INSERT INTO news(title,image,introduce,content,download,cate_id) VALUES('$title','$image','$introduce','$content','$download','$cate_id')";
             $query=mysqli_query($conn,$insertData);
             mysqli_close($conn);
+         
         }
 }
 ?>
@@ -85,6 +94,11 @@ if(isset($_POST["ok"]))
                  
                 </tr>
                 <tr>
+                    <td>Link download game</td>
+                    <td><input type="text" size="70" name="txtdownload"></td>
+                   
+                </tr>
+                <tr>
                     <td></td>
                     <td><button class="add" name="ok">Add</button></td>
                 </tr>
@@ -98,7 +112,8 @@ if(isset($_POST["ok"]))
  echo $loi["title"];
  echo $loi["image"];
  echo $loi["introduce"];
- echo $loi["content"]; 
+ echo $loi["content"];
+ echo $loi["download"];  
 ?>
 </div>
 <div id="bottom">Copyright &copy; by sharing game to you</div>

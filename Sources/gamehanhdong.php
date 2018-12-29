@@ -46,8 +46,8 @@
                                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink"
                                             data-toggle="dropdown">DANH MỤC</a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <a class="dropdown-item" href="category.php">HÀNH ĐỘNG</a> <a class="dropdown-item"
-                                                href="# ">PHIÊU LƯU<U></U></a> <a class="dropdown-item" href="#">THỂ
+                                            <a class="dropdown-item" href="gamehanhdong.php">HÀNH ĐỘNG</a> <a class="dropdown-item"
+                                                href="# ">PHIÊU LƯU<U></U></a> <a class="dropdown-item" href="gamethethao.php">THỂ
                                                 THAO</a>
                                             <a class="dropdown-item" href="support.php">SUPPORT</a>
                                             <a class="dropdown-item" href="upload.php">YÊU CẦU UPLOAD</a>
@@ -93,26 +93,19 @@
             <!-- game list -->
         </div>
         <div class="row">
-            <div class="col-md-4">
-                <img alt="Bootstrap Image Preview" src="cod2.jpeg" />
-                <a href="cod.php">Call of duty WW2</a>
-            </div>
-            <div class="col-md-4">
-                <img alt="Bootstrap Image Preview" src="msw.jpeg" />
-                <a href="">Shadow Of War</a>
-            </div>
-        </div>
-        <br>
-        <br>
-        <div class="row">
-            <div class="col-md-4">
-                <img alt="" src="tomraider.jpeg" />
-                <a href="">Tom Raider</a>
-            </div>
-            <div class="col-md-4">
-                <img alt="" src="ass.jpeg" />
-                <a href="">Assassin's Creed Syndicate</a>
-            </div>
+                <?php
+                    require("config.php");
+                    $result=mysqli_query($conn , "select title,image,introduce from news");
+                   while ($data=mysqli_fetch_assoc($result))
+                   {
+                    echo "<div class='col-md-4'>";
+                    echo " <img alt='Bootstrap Image Preview' src='$data[image]' />";
+                    echo  "<a href='cod.php'>$data[title]</a>";
+                    echo "</div>";
+                   }
+                  mysqli_close($conn);
+                ?>
+        
         </div>
         <br>
         <br>

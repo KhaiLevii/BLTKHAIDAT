@@ -33,6 +33,19 @@
         }
     }
     </script>
+    <script language="javascript">
+    function show_confirmindex()
+    {
+        if(confirm("bạn có muốn xoá game này không?"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    </script>
     
 
 </head>
@@ -44,6 +57,7 @@
     <div id="menu">
         <ul>
             <li><a href="list_user.php">Quản lí thành viên</a></li>
+            <li><a href="list_index.php">Chỉnh sửa trang chủ</a></li>
             <li><a href="list_category.php">Quản lí chuyên mục</a></li>
             <li><a href="list_article.php">Quản lí nội dung</a></li>
             <li><a href="list_comment.php">Quản lí bình luận</a></li>

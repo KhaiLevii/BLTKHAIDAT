@@ -4,7 +4,7 @@ padding: 0px;
 margin: 0px;
 }
 body{
-width: 800px;
+width: 1000px;
 margin: auto;
 }
 a{
@@ -45,7 +45,7 @@ margin-top: 8px;
 #wrapper table{
 border-collapse: collapse;
 margin-top:20px;
-width: 800px;
+width: 1000px;
 text-align: center;
 }
 #wrapper table tr{
