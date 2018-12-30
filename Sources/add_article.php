@@ -1,8 +1,8 @@
 <?php
 require("headeradmin.php");
 $loi = array();
-$loi['title']=$loi['image']= $loi['introduce']=$loi['content']=$loi['download']=NULL;
-$title=$image=$introduce=$content=$download=NULL;
+$loi['title']=$loi['image']=$loi['imagetop']= $loi['imagemid']= $loi['introduce']=$loi['content']=$loi['review']=$loi['download']=NULL;
+$title=$image=$introduce=$content=$download=$review=$imagemid=$imagetop=NULL;
 if(isset($_POST["ok"]))
 {
     $cate_id=$_POST["txtcate"];
@@ -22,6 +22,22 @@ if(isset($_POST["ok"]))
         {
             $image=$_FILES["image"]["name"];
         }
+    if($_FILES["imagetop"]["error"]>0)
+        {
+            $loi["imagetop"]="* Xin vui lòng chọn hình ảnh cho vài viết <br/>";
+        }
+    else
+        {
+            $imagetop=$_FILES["imagetop"]["name"];
+        }      
+    if($_FILES["imagemid"]["error"]>0)
+        {
+            $loi["imagemid"]="* Xin vui lòng chọn hình ảnh cho vài viết <br/>";
+        }
+    else
+        {
+            $imagemid=$_FILES["imagemid"]["name"];
+        }      
     if ($_POST['txtintroduce']==NULL)
         {
             $loi['introduce'] = '* Xin vui lòng mô tả bài viết <br/>';
@@ -38,6 +54,15 @@ if(isset($_POST["ok"]))
         {
             $content=$_POST['txtcontent'];
         }
+    if ($_POST['txtreview']==NULL)
+        {
+            $loi['review']="* Xin vui lòng chèn link review game <br/>";
+            
+        }
+    else
+        {
+            $review=$_POST['txtreview'];
+        }
     if ($_POST['txtdownload']==NULL)
         {
             $loi['download']="* Xin vui lòng chèn link download <br/>";
@@ -46,10 +71,11 @@ if(isset($_POST["ok"]))
         {
             $download=$_POST['txtdownload'];
         }
-    if (isset($title,$image,$introduce,$content,$download))
+
+    if (isset($title,$image,$imagetop,$imagemid,$introduce,$content,$review,$download))
         {
             require("config.php");
-            $insertData = "INSERT INTO news(title,image,introduce,content,download,cate_id) VALUES('$title','$image','$introduce','$content','$download','$cate_id')";
+            $insertData = "INSERT INTO news(title,image,imagetop,imagemid,introduce,content,review,download,cate_id) VALUES('$title','$image','$imagetop','$imagemid','$introduce','$content','$review','$download','$cate_id')";
             $query=mysqli_query($conn,$insertData);
             mysqli_close($conn);
          
@@ -57,7 +83,7 @@ if(isset($_POST["ok"]))
 }
 ?>
 <div id=wrapper2>
-    <fieldset style="width:1000px;margin:20px auto:10px;margin-left:-17%;padding:40px;">
+    <fieldset style="width:1000px;margin:20px auto:10px;margin-left:-5%;padding:40px;">
         <legend style="text-align:center;">Thêm bài viết</legend>
         <form action="add_article.php" method="POST" enctype="multipart/form-data">
             <table>
@@ -79,11 +105,22 @@ if(isset($_POST["ok"]))
                    
                 </tr>
                 <tr>
-                    <td>Hình ảnh</td>
+                    <td>Hình ảnh Game</td>
                     <td><input type="file" size="25" name="image"></td>
                     
                 </tr>
                 <tr>
+                    <td>Hình ảnh Top</td>
+                    <td><input type="file" size="25" name="imagetop"></td>
+                    
+                </tr>
+                <tr>
+                    <td>Hình ảnh Mid</td>
+                    <td><input type="file" size="25" name="imagemid"></td>
+                    
+                </tr>
+                <tr>
+
                     <td>Mô tả</td>
                     <td><textarea id="" cols="72" rows="5" name="txtintroduce"></textarea></td>
                     
@@ -92,6 +129,11 @@ if(isset($_POST["ok"]))
                     <td>Nội Dung</td>
                     <td><textarea id="" cols="72" rows="15" name="txtcontent"></textarea></td>
                  
+                </tr>
+                <tr>
+                    <td>Link review game</td>
+                    <td><input type="text" size="70" name="txtreview"></td>
+                   
                 </tr>
                 <tr>
                     <td>Link download game</td>
@@ -111,8 +153,11 @@ if(isset($_POST["ok"]))
 <?php
  echo $loi["title"];
  echo $loi["image"];
+ echo $loi["imagetop"];
+ echo $loi["imagemid"];
  echo $loi["introduce"];
  echo $loi["content"];
+ echo $loi["review"];
  echo $loi["download"];  
 ?>
 </div>

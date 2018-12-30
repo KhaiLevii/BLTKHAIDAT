@@ -95,12 +95,13 @@
         <div class="row">
                 <?php
                     require("config.php");
-                    $result=mysqli_query($conn , "select title,image,introduce from news");
+                    $result=mysqli_query($conn , "select * from indexs where theloai=1");
                    while ($data=mysqli_fetch_assoc($result))
                    {
                     echo "<div class='col-md-4'>";
-                    echo " <img alt='Bootstrap Image Preview' src='$data[image]' />";
-                    echo  "<a href='cod.php'>$data[title]</a>";
+                    echo "<br/>";
+                    echo " <img alt='Bootstrap Image Preview' src='$data[imagegame]' />";
+                    echo  "<a href='cod.php'>$data[title_game]</a>";
                     echo "</div>";
                    }
                   mysqli_close($conn);
