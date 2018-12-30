@@ -1,8 +1,8 @@
 <?php
 require("headeradmin.php");
 $loi = array();
-$loi['title']=$loi['image']=$loi['imagetop']= $loi['imagemid']= $loi['introduce']=$loi['content']=$loi['review']=$loi['download']=NULL;
-$title=$image=$introduce=$content=$download=$review=$imagemid=$imagetop=NULL;
+$loi['title']=$loi['image']=$loi['imagetop']= $loi['imagemid']= $loi['introduce']=$loi['content']=$loi['review']=$loi['cauhinh']=$loi['download']=NULL;
+$title=$image=$introduce=$content=$download=$review=$imagemid=$imagetop=$cauhinh=NULL;
 if(isset($_POST["ok"]))
 {
     $cate_id=$_POST["txtcate"];
@@ -63,6 +63,14 @@ if(isset($_POST["ok"]))
         {
             $review=$_POST['txtreview'];
         }
+    if ($_POST['txtcauhinh']==NULL)
+        {
+            $loi['cauhinh'] = "* Xin vui lòng mô tả cấu hình máy <br/>";
+        }
+    else
+        {
+            $cauhinh=$_POST['txtcauhinh'];
+        }
     if ($_POST['txtdownload']==NULL)
         {
             $loi['download']="* Xin vui lòng chèn link download <br/>";
@@ -72,10 +80,10 @@ if(isset($_POST["ok"]))
             $download=$_POST['txtdownload'];
         }
 
-    if (isset($title,$image,$imagetop,$imagemid,$introduce,$content,$review,$download))
+    if (isset($title,$image,$imagetop,$imagemid,$introduce,$content,$review,$cauhinh,$download))
         {
             require("config.php");
-            $insertData = "INSERT INTO news(title,image,imagetop,imagemid,introduce,content,review,download,cate_id) VALUES('$title','$image','$imagetop','$imagemid','$introduce','$content','$review','$download','$cate_id')";
+            $insertData = "INSERT INTO news(title,image,imagetop,imagemid,introduce,content,review,cauhinh,download,cate_id) VALUES('$title','$image','$imagetop','$imagemid','$introduce','$content','$review','$cauhinh','$download','$cate_id')";
             $query=mysqli_query($conn,$insertData);
             mysqli_close($conn);
          
@@ -130,11 +138,41 @@ if(isset($_POST["ok"]))
                     <td><textarea id="" cols="72" rows="15" name="txtcontent"></textarea></td>
                  
                 </tr>
+                <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace( 'txtcontent', {
+      filebrowserBrowseUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/ckfinder.html',
+      filebrowserImageBrowseUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/ckfinder.html?type=Images',
+      filebrowserFlashBrowseUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/ckfinder.html?type=Flash',
+      filebrowserUploadUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+      filebrowserImageUploadUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+      filebrowserFlashUploadUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+     } ); 
+            </script>
                 <tr>
                     <td>Link review game</td>
                     <td><input type="text" size="70" name="txtreview"></td>
                    
                 </tr>
+                <tr>
+
+                    <td>Chi tiết cấu hình</td>
+                    <td><textarea id="" cols="72" rows="5" name="txtcauhinh"></textarea></td>
+                    
+                </tr>
+                <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace( 'txtcauhinh', {
+      filebrowserBrowseUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/ckfinder.html',
+      filebrowserImageBrowseUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/ckfinder.html?type=Images',
+      filebrowserFlashBrowseUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/ckfinder.html?type=Flash',
+      filebrowserUploadUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+      filebrowserImageUploadUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+      filebrowserFlashUploadUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+     } ); 
+            </script>
                 <tr>
                     <td>Link download game</td>
                     <td><input type="text" size="70" name="txtdownload"></td>
@@ -158,6 +196,7 @@ if(isset($_POST["ok"]))
  echo $loi["introduce"];
  echo $loi["content"];
  echo $loi["review"];
+ echo $loi["cauhinh"];
  echo $loi["download"];  
 ?>
 </div>

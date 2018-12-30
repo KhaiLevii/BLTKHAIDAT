@@ -64,13 +64,13 @@ echo "<div class='carousel slide' id='carousel-916956'>";
 <div class="row">
 <?php
                     require("config.php");
-                    $result=mysqli_query($conn , "select title_game,imagegame from indexs");
+                    $result=mysqli_query($conn , "select index_id,title_game,imagegame from indexs");
                    while ($data=mysqli_fetch_assoc($result))
                    {
                     echo "<div class='col-md-4'>";
                     echo "<br/>";
                     echo " <img alt='' src='$data[imagegame]' />";
-                    echo  "<a href='cod.php'>$data[title_game]</a>";
+                    echo  "<a href='cod.php?idGame=$data[index_id]'>$data[title_game]</a>";
                     echo "</div>";
                    }
                   mysqli_close($conn);

@@ -101,7 +101,7 @@
                     echo "<div class='col-md-4'>";
                     echo "<br/>";
                     echo " <img alt='Bootstrap Image Preview' src='$data[imagegame]' />";
-                    echo  "<a href='cod.php'>$data[title_game]</a>";
+                    echo  "<a href='cod.php?idGame=$data[index_id]'>$data[title_game]</a>";
                     echo "</div>";
                    }
                   mysqli_close($conn);
