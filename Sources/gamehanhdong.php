@@ -95,7 +95,7 @@
         <div class="row">
                 <?php
                     require("config.php");
-                    $result=mysqli_query($conn , "select * from indexs where theloai=1");
+                    $result=mysqli_query($conn , "select * from indexs where cate_id=17");
                    while ($data=mysqli_fetch_assoc($result))
                    {
                     echo "<div class='col-md-4'>";

@@ -153,7 +153,7 @@ mysqli_close($conn);
 <div class="row">
                 <?php
                     require("config.php");
-                    $result=mysqli_query($conn , "select * from indexs where theloai=1");
+                    $result=mysqli_query($conn , "select * from indexs where cate_id=$data[cate_id]");
                    while ($data=mysqli_fetch_assoc($result))
                    {
                     echo "<div class='col-md-4'>";
@@ -177,5 +177,5 @@ mysqli_close($conn);
             </address>
         </div>
     </div>
-
+    SELECT a.news_id, a.title, b.cate_title FROM news as a , category as b WHERE a.cate_id=b.cate_id
     <div>
