@@ -10,7 +10,7 @@ require("header.php");
     <?php
  
     require("config.php");
-    $result=mysqli_query($conn , "select imagetop from indexs");
+    $result=mysqli_query($conn , "select * from imageslide");
 
 $data=mysqli_fetch_assoc($result);
 echo "<div class='col-md-12'>";
@@ -38,8 +38,8 @@ echo "<div class='carousel slide' id='carousel-916956'>";
              echo "<div class='carousel-inner'>";
              
              echo "<div class='carousel-item active'>
-             <a href='fifa19.php'>
-                 <img class='d-block w-100' alt='Carousel Bootstrap First' src='$data[imagetop]' />
+             <a href='cod.php?idGame=$data[index_id]'>
+                 <img class='d-block w-100' alt='Carousel Bootstrap First' src='$data[image]' />
              </a>
 
          </div>";

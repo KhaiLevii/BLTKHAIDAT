@@ -16,27 +16,23 @@ require("headeradmin.php");
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Hành động</td>
-                <td>Siêu phẩm Call of Duty WW2</td>
-                <td><a href="#">Edit</a></td>
-                <td><a href="#" style="color:blue;">Delete</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Thể Thao</td>
-                <td>Siêu phẩm Fifa 19</td>
-                <td><a href="#">Edit</a></td>
-                <td><a href="#" style="color:blue;">Delete</a></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Phiêu lưu</td>
-                <td>Siêu phẩm Tomb raider 2013</td>
-                <td><a href="#">Edit</a></td>
-                <td><a href="#" style="color:blue;">Delete</a></td>
-            </tr>
+            <?php
+              require("config.php");
+              $stt=1;
+              $result=mysqli_query($conn, "SELECT a.news_id, a.title, b.cate_title FROM news as a , category as b WHERE a.cate_id=b.cate_id");
+              while($data=mysqli_fetch_assoc($result))
+              {
+                echo"<tr>";
+                echo"<td>$stt</td>";
+                echo"<td>$data[cate_title]</td>";
+                echo"<td>$data[title]</td>";
+                echo"<td><a href='edit_article.php?id=$data[news_id]'>Edit</a></td>";
+                echo"<td><a href='delete_article?id=$data[news_id]' onclick='return show_confirmarticle();' style='color:blue;'>Delete</a></td>";
+                echo"</tr>";
+                $stt++;
+              }
+            mysqli_close($conn);
+            ?>
         </table>
     </div>
     <div id="bottom">Copyright &copy; by sharing game to you</div>

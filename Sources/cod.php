@@ -7,37 +7,55 @@ require("header.php");
 <!-- slide show -->
 <div class="container">
 <div class="row">
-    <div class="col-md-12">
-        <div class="carousel slide" id="carousel-916956">
-            <ol class="carousel-indicators">
-                <li data-slide-to="0" data-target="#carousel-916956">
-                </li>
-                <li data-slide-to="1" data-target="#carousel-916956" class="active">
-                </li>
-                <li data-slide-to="2" data-target="#carousel-916956">
-                </li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item">
-                    <a href="fifa19.php">
-                        <img class="d-block w-100" alt="Carousel Bootstrap First" src="fifa19.jpeg" />
-                    </a>
+    < <?php
+ 
+ require("config.php");
+ $result=mysqli_query($conn , "select * from imageslide");
 
-                </div>
-                <div class="carousel-item active">
-                <a href="cod.php">
-                    <img class="d-block w-100" alt="Carousel Bootstrap Second" src="cod.jpeg" />
+$data=mysqli_fetch_assoc($result);
+echo "<div class='col-md-12'>";
+echo "<div class='carousel slide' id='carousel-916956'>";
+echo    "<ol class='carousel-indicators'>
+        <li data-slide-to='0' data-target='#carousel-916956'>
+        </li>
+        <li data-slide-to='1' data-target='#carousel-916956' class='active'>
+        </li>
+        <li data-slide-to='2' data-target='#carousel-916956' class='active'>
+        </li>
+      
+    </ol> ";
 
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" alt="Carousel Bootstrap Third" src="spider.jpeg" />
+ echo "<div class='carousel slide' id='carousel-916956'>";
+ echo    "<ol class='carousel-indicators'>
+         <li data-slide-to='0' data-target='#carousel-916956'>
+         </li>
+         <li data-slide-to='1' data-target='#carousel-916956' class='active'>
+         </li>
+         <li data-slide-to='2' data-target='#carousel-916956' class='active'>
+         </li>
+       
+     </ol> ";
+          echo "<div class='carousel-inner'>";
+          
+          echo "<div class='carousel-item active'>
+          <a href='cod.php?idGame=$data[index_id]'>
+              <img class='d-block w-100' alt='Carousel Bootstrap First' src='$data[image]' />
+          </a>
 
-                </div>
-            </div> <a class="carousel-control-prev" href="#carousel-916956" data-slide="prev"><span class="carousel-control-prev-icon"></span>
-                <span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#carousel-916956"
-                data-slide="next"><span class="carousel-control-next-icon"></span> <span class="sr-only">Next</span></a>
-        </div>
-    </div>
+      </div>";
+     echo "</div> <a class='carousel-control-prev' href='#carousel-916956' data-slide='prev'><span class='carousel-control-prev-icon'></span>
+     <span class='sr-only'>Previous</span></a> <a class='carousel-control-next' href='#carousel-916956'
+     data-slide='next'><span class='carousel-control-next-icon'></span> <span class='sr-only'>Next</span></a>
+</div>";
+ echo "</div>";
+ echo "</div>";
+  echo "</div>";
+
+
+ 
+
+mysqli_close($conn);
+ ?>
 </div>
 </div>
 <br>

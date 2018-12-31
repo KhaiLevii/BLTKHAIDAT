@@ -47,8 +47,19 @@
         }
     }
     </script>
-    
-
+    <script language="javascript">
+    function show_confirmarticle()
+    {
+        if(confirm("bạn có muốn xoá bài viết này không?"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    </script>
 </head>
 
 <body>

@@ -17,7 +17,7 @@ if(isset($_POST["ok"]))
         if (isset($image))
         {
             require("config.php");
-            $insertData = "INSERT INTO indexs(imagetop) VALUES('$image')";
+            $insertData = "INSERT INTO imageslide(image) VALUES('$image')";
             $query=mysqli_query($conn,$insertData);
             mysqli_close($conn);
          
@@ -27,7 +27,7 @@ if(isset($_POST["ok"]))
 <div id="wrapper2">
     <fieldset style="width:27px;margin:20px auto 10px;">
         <legend style="text-align:center;">Thêm image trang chủ</legend>
-        <form action="add_imageindex.php" method="post" enctype="multipart/form-data">
+        <form action="add_imageslide.php" method="post" enctype="multipart/form-data">
             <table style="margin:10px 20px;">
                 <tr>
                     <td>Hình ảnh</td>

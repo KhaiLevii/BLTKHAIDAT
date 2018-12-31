@@ -1,83 +1,93 @@
 <?php
 require("headeradmin.php");
-$loi = array();
+$id=$_GET["id"];
 $loi['title']=$loi['image']= $loi['introduce']=$loi['content']=$loi['review']=$loi['cauhinh']=$loi['download']=NULL;
 $title=$image=$introduce=$content=$download=$review=$cauhinh=NULL;
-if(isset($_POST["ok"]))
+if (isset($_POST['ok']))
 {
-    $cate_id=$_POST["txtcate"];
+    $cate_id=$_POST['txtcate'];
     if ($_POST['txttitle']==NULL)
-        {
-            $loi["title"]="* Xin vui lòng nhập vào tiêu đề mới <br/>";
-        }
+    {
+        $loi["title"]="* Xin vui lòng nhập vào tiêu đề mới <br/>";
+    }
     else
-        {       
-            $title=$_POST['txttitle'];
-        }
+    {       
+        $title=$_POST['txttitle'];
+    }
     if($_FILES["image"]["error"]>0)
-        {
-            $loi["image"]="* Xin vui lòng chọn hình ảnh cho vài viết <br/>";
-        }
+    {
+        $image="none";
+    }
     else
-        {
-            $image=$_FILES["image"]["name"];
-        }
+    {
+        $image=$_FILES["image"]["name"];
+    }     
     if ($_POST['txtintroduce']==NULL)
-        {
-            $loi['introduce'] = '* Xin vui lòng mô tả bài viết <br/>';
-        }
+    {
+        $loi['introduce'] = '* Xin vui lòng mô tả bài viết <br/>';
+    }
     else
-        {
-            $introduce=$_POST['txtintroduce'];
-        }
+    {
+        $introduce=$_POST['txtintroduce'];
+    }
     if ($_POST['txtcontent']==NULL)
-        {
-            $loi['content']= "* Xin vui lòng nhập nội dung bài viết <br/>";
-        }
+    {
+        $loi['content']= "* Xin vui lòng nhập nội dung bài viết <br/>";
+    }
     else
-        {
-            $content=$_POST['txtcontent'];
-        }
+    {
+        $content=$_POST['txtcontent'];
+    }
     if ($_POST['txtreview']==NULL)
-        {
-            $loi['review']="* Xin vui lòng chèn link review game <br/>";
-            
-        }
+    {
+        $loi['review']="* Xin vui lòng chèn link review game <br/>";
+        
+    }
     else
-        {
-            $review=$_POST['txtreview'];
-        }
+    {
+        $review=$_POST['txtreview'];
+    }
     if ($_POST['txtcauhinh']==NULL)
-        {
-            $loi['cauhinh'] = "* Xin vui lòng mô tả cấu hình máy <br/>";
-        }
+    {
+        $loi['cauhinh'] = "* Xin vui lòng mô tả cấu hình máy <br/>";
+    }
     else
-        {
-            $cauhinh=$_POST['txtcauhinh'];
-        }
+    {
+        $cauhinh=$_POST['txtcauhinh'];
+    }
     if ($_POST['txtdownload']==NULL)
-        {
-            $loi['download']="* Xin vui lòng chèn link download <br/>";
-        }
+    {
+        $loi['download']="* Xin vui lòng chèn link download <br/>";
+    }
     else
-        {
-            $download=$_POST['txtdownload'];
-        }
+    {
+        $download=$_POST['txtdownload'];
+    }
 
     if (isset($title,$image,$introduce,$content,$review,$cauhinh,$download))
+    {
+        require("config.php");
+        if ($image=='none')
         {
-            require("config.php");
-            $insertData = "INSERT INTO news(title,image,introduce,content,review,cauhinh,download,cate_id) VALUES('$title','$image','$introduce','$content','$review','$cauhinh','$download','$cate_id')";
-            $query=mysqli_query($conn,$insertData);
-            mysqli_close($conn);
-         
+            mysqli_query($conn , "UPDATE news set cate_id='$cate_id',title='$title',introduce='$introduce',content='$content',review='$review',cauhinh='$cauhinh',download='$download' WHERE news_id=$id");
         }
+        else
+        {
+            mysqli_query($conn , "UPDATE news set cate_id='$cate_id',title='$title',image='$image',introduce='$introduce',content='$content',review='$review',cauhinh='$cauhinh',download='$download' WHERE news_id=$id");
+        }
+     mysqli_close($conn);
+     header("location:list_article.php");
+     exit();
+    }
 }
+require("config.php");
+$result=mysqli_query($conn, "select cate_id, title,image,introduce,content,review,cauhinh,download from news where news_id=$id");
+$data=mysqli_fetch_assoc($result);
 ?>
 <div id=wrapper2>
     <fieldset style="width:1000px;margin:20px auto:10px;margin-left:-5%;padding:40px;">
         <legend style="text-align:center;">Thêm bài viết</legend>
-        <form action="add_article.php" method="POST" enctype="multipart/form-data">
+        <form action="edit_article.php?id=<?php echo $id; ?>" method="POST" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td>Chuyên mục</td>
@@ -85,35 +95,47 @@ if(isset($_POST["ok"]))
                         <select name="txtcate">
                         <?php
                         require("config.php");
-                        $result=mysqli_query($conn, "SELECT cate_id,cate_title from category");
-                       while($data=mysqli_fetch_assoc($result))
+                        $result2=mysqli_query($conn, "SELECT cate_id,cate_title from category");
+                       while($data2=mysqli_fetch_assoc($result2))
                        {
-                           echo "<option value='$data[cate_id]'>$data[cate_title]</option>";
+                        if($data['cate_id']==$data2['cate_id'])
+                        {
+                           echo "<option value='$data2[cate_id]' selected='selected'>$data2[cate_title]</option>";
+                        }
+                        else
+                        {
+                            echo "<option value='$data2[cate_id]' >$data2[cate_title]</option>";
+                        }
                        }
                            mysqli_close($conn);
                             ?>
+                          
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td>Tiêu đề</td>
-                    <td><input type="text" size="70" name="txttitle"></td>
+                    <td><input type="text" size="70" name="txttitle" value="<?php echo $data['title'];?>"></td>
                    
                 </tr>
                 <tr>
-                    <td>Hình ảnh Game</td>
+                <td>Hình ảnh game cũ</td>
+                <td><img src="<?php echo $data['image'];?>"></td>
+                </tr>
+                <tr>
+                    <td>Hình ảnh Game mới</td>
                     <td><input type="file" size="25" name="image"></td>
                     
                 </tr>
                 <tr>
 
                     <td>Mô tả</td>
-                    <td><textarea id="" cols="72" rows="5" name="txtintroduce"></textarea></td>
+                    <td><textarea id="" cols="72" rows="5" name="txtintroduce" ><?php echo $data['introduce'];?></textarea></td>
                     
                 </tr>
                 <tr>
                     <td>Nội Dung</td>
-                    <td><textarea id="" cols="72" rows="15" name="txtcontent"></textarea></td>
+                    <td><textarea id="" cols="72" rows="15" name="txtcontent"><?php echo $data['content'];?></textarea></td>
                  
                 </tr>
                 <script>
@@ -130,13 +152,13 @@ if(isset($_POST["ok"]))
             </script>
                 <tr>
                     <td>Link review game</td>
-                    <td><input type="text" size="70" name="txtreview"></td>
+                    <td><input type="text" size="70" name="txtreview" value="<?php echo $data['review'];?>"></td>
                    
                 </tr>
                 <tr>
 
                     <td>Chi tiết cấu hình</td>
-                    <td><textarea id="" cols="72" rows="5" name="txtcauhinh"></textarea></td>
+                    <td><textarea id="" cols="72" rows="5" name="txtcauhinh"><?php echo $data['cauhinh'];?></textarea></td>
                     
                 </tr>
                 <script>
@@ -153,27 +175,16 @@ if(isset($_POST["ok"]))
             </script>
                 <tr>
                     <td>Link download game</td>
-                    <td><input type="text" size="70" name="txtdownload"></td>
+                    <td><input type="text" size="70" name="txtdownload" value="<?php echo $data['download'];?>"></td>
                    
                 </tr>
                 <tr>
                     <td></td>
-                    <td><button class="add" name="ok">Add</button></td>
+                    <td><button class="add" name="ok">UPDATE</button></td>
                 </tr>
             </table>
         </form>
     </fieldset>
 
-</div>
-<div>
-<?php
- echo $loi["title"];
- echo $loi["image"];
- echo $loi["introduce"];
- echo $loi["content"];
- echo $loi["review"];
- echo $loi["cauhinh"];
- echo $loi["download"];  
-?>
 </div>
 <div id="bottom">Copyright &copy; by sharing game to you</div>

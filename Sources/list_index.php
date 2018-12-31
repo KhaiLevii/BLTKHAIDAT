@@ -7,7 +7,7 @@ require("headeradmin.php");
         <table>
             <tr>
                 <td colspan="2"><a href="add_index.php" style="color:blue;">Thêm Game</a></td>
-                <td colspan="2"><a href="add_imageindex.php" style="color:blue;">Thêm Image Trang Chủ</a></td>
+                <td colspan="2"><a href="add_imageslide.php" style="color:blue;">Thêm Image Trang Chủ</a></td>
             </tr>
             <tr style="background:blue;color:white;">
                 <th>STT</th>
