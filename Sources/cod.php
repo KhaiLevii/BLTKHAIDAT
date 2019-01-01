@@ -128,14 +128,14 @@ mysqli_close($conn);
                         </div>";
                        echo "<div class='tab-pane' id='tab2'>";
                             echo"<p style='font-size:20px;'>
-                        Fshare : <a href='$data[download]'>$data[download]</a>
+                        Fshare : <a href='$data[fshare]'>$data[fshare]</a>
                         <br>
                         <br>
-                        4share : <a href='$data[download]'>$data[download]</a>
+                        4share : <a href='$data[share4]'>$data[share4]</a>
                         <br>
                         <br>
 
-                        <strong> Crack Fix</strong> : <a href='http://turboagram.com/HppX'>http://turboagram.com/HppX</a>
+                        <strong> Crack Fix</strong> : <a href='$data[crack]'>$data[crack]</a>
                     </p>";
                 echo"</div>";
                 mysqli_close($conn);
@@ -177,5 +177,4 @@ mysqli_close($conn);
             </address>
         </div>
     </div>
-    SELECT a.news_id, a.title, b.cate_title FROM news as a , category as b WHERE a.cate_id=b.cate_id
     <div>

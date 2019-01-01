@@ -1,8 +1,8 @@
 <?php
 require("headeradmin.php");
 $loi = array();
-$loi['title']=$loi['image']= $loi['introduce']=$loi['content']=$loi['review']=$loi['cauhinh']=$loi['download']=NULL;
-$title=$image=$introduce=$content=$download=$review=$cauhinh=NULL;
+$loi['title']=$loi['image']= $loi['introduce']=$loi['content']=$loi['review']=$loi['cauhinh']=$loi['fshare']=$loi['share4']=$loi['crack']=NULL;
+$title=$image=$introduce=$content=$fshare=$share4=$crack=$review=$cauhinh=NULL;
 if(isset($_POST["ok"]))
 {
     $cate_id=$_POST["txtcate"];
@@ -55,19 +55,35 @@ if(isset($_POST["ok"]))
         {
             $cauhinh=$_POST['txtcauhinh'];
         }
-    if ($_POST['txtdownload']==NULL)
+    if ($_POST['txtfshare']==NULL)
         {
-            $loi['download']="* Xin vui lòng chèn link download <br/>";
+            $loi['fshare']="* Xin vui lòng chèn link Fshare <br/>";
         }
     else
         {
-            $download=$_POST['txtdownload'];
+            $fshare=$_POST['txtfshare'];
+        }
+        if ($_POST['txtshare4']==NULL)
+        {
+            $loi['share4']="* Xin vui lòng chèn link 4share <br/>";
+        }
+    else
+        {
+            $share4=$_POST['txtshare4'];
+        }
+        if ($_POST['txtcrack']==NULL)
+        {
+            $loi['crack']="* Xin vui lòng chèn link Crack <br/>";
+        }
+    else
+        {
+            $crack=$_POST['txtcrack'];
         }
 
-    if (isset($title,$image,$introduce,$content,$review,$cauhinh,$download))
+    if (isset($title,$image,$introduce,$content,$review,$cauhinh,$fshare,$share4,$crack))
         {
             require("config.php");
-            $insertData = "INSERT INTO news(title,image,introduce,content,review,cauhinh,download,cate_id) VALUES('$title','$image','$introduce','$content','$review','$cauhinh','$download','$cate_id')";
+            $insertData = "INSERT INTO news(title,image,introduce,content,review,cauhinh,fshare,share4,crack,cate_id) VALUES('$title','$image','$introduce','$content','$review','$cauhinh','$fshare','$share4','$crack','$cate_id')";
             $query=mysqli_query($conn,$insertData);
             mysqli_close($conn);
          
@@ -152,8 +168,18 @@ if(isset($_POST["ok"]))
      } ); 
             </script>
                 <tr>
-                    <td>Link download game</td>
-                    <td><input type="text" size="70" name="txtdownload"></td>
+                    <td>Link Fshare</td>
+                    <td><input type="text" size="70" name="txtfshare"></td>
+                   
+                </tr>
+                <tr>
+                    <td>Link 4share</td>
+                    <td><input type="text" size="70" name="txtshare4"></td>
+                   
+                </tr>
+                <tr>
+                    <td>Link Crack fix</td>
+                    <td><input type="text" size="70" name="txtcrack"></td>
                    
                 </tr>
                 <tr>
@@ -173,7 +199,9 @@ if(isset($_POST["ok"]))
  echo $loi["content"];
  echo $loi["review"];
  echo $loi["cauhinh"];
- echo $loi["download"];  
+ echo $loi["fshare"];
+ echo $loi["share4"]; 
+ echo $loi["crack"];   
 ?>
 </div>
 <div id="bottom">Copyright &copy; by sharing game to you</div>

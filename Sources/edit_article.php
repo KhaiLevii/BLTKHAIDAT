@@ -1,8 +1,8 @@
 <?php
 require("headeradmin.php");
 $id=$_GET["id"];
-$loi['title']=$loi['image']= $loi['introduce']=$loi['content']=$loi['review']=$loi['cauhinh']=$loi['download']=NULL;
-$title=$image=$introduce=$content=$download=$review=$cauhinh=NULL;
+$loi['title']=$loi['image']= $loi['introduce']=$loi['content']=$loi['review']=$loi['cauhinh']=$loi['fshare']=$loi['share4']=$loi['crack']=NULL;
+$title=$image=$introduce=$content=$fshare=$share4=$crack=$review=$cauhinh=NULL;
 if (isset($_POST['ok']))
 {
     $cate_id=$_POST['txtcate'];
@@ -55,25 +55,40 @@ if (isset($_POST['ok']))
     {
         $cauhinh=$_POST['txtcauhinh'];
     }
-    if ($_POST['txtdownload']==NULL)
-    {
-        $loi['download']="* Xin vui lòng chèn link download <br/>";
-    }
+    if ($_POST['txtfshare']==NULL)
+        {
+            $loi['fshare']="* Xin vui lòng chèn link Fshare <br/>";
+        }
     else
-    {
-        $download=$_POST['txtdownload'];
-    }
-
-    if (isset($title,$image,$introduce,$content,$review,$cauhinh,$download))
+        {
+            $fshare=$_POST['txtfshare'];
+        }
+        if ($_POST['txtshare4']==NULL)
+        {
+            $loi['share4']="* Xin vui lòng chèn link 4share <br/>";
+        }
+    else
+        {
+            $share4=$_POST['txtshare4'];
+        }
+        if ($_POST['txtcrack']==NULL)
+        {
+            $loi['crack']="* Xin vui lòng chèn link Crack <br/>";
+        }
+    else
+        {
+            $crack=$_POST['txtcrack'];
+        }
+    if (isset($title,$image,$introduce,$content,$review,$cauhinh,$fshare,$share4,$crack))
     {
         require("config.php");
         if ($image=='none')
         {
-            mysqli_query($conn , "UPDATE news set cate_id='$cate_id',title='$title',introduce='$introduce',content='$content',review='$review',cauhinh='$cauhinh',download='$download' WHERE news_id=$id");
+            mysqli_query($conn , "UPDATE news set cate_id='$cate_id',title='$title',introduce='$introduce',content='$content',review='$review',cauhinh='$cauhinh',fshare='$fshare',share4='$share4',crack='$crack' WHERE news_id=$id");
         }
         else
         {
-            mysqli_query($conn , "UPDATE news set cate_id='$cate_id',title='$title',image='$image',introduce='$introduce',content='$content',review='$review',cauhinh='$cauhinh',download='$download' WHERE news_id=$id");
+            mysqli_query($conn , "UPDATE news set cate_id='$cate_id',title='$title',image='$image',introduce='$introduce',content='$content',review='$review',cauhinh='$cauhinh',fshare='$fshare',share4='$share4',crack='$crack' WHERE news_id=$id");
         }
      mysqli_close($conn);
      header("location:list_article.php");
@@ -81,7 +96,7 @@ if (isset($_POST['ok']))
     }
 }
 require("config.php");
-$result=mysqli_query($conn, "select cate_id, title,image,introduce,content,review,cauhinh,download from news where news_id=$id");
+$result=mysqli_query($conn, "select cate_id, title,image,introduce,content,review,cauhinh,fshare,share4,crack from news where news_id=$id");
 $data=mysqli_fetch_assoc($result);
 ?>
 <div id=wrapper2>
@@ -174,8 +189,18 @@ $data=mysqli_fetch_assoc($result);
      } ); 
             </script>
                 <tr>
-                    <td>Link download game</td>
-                    <td><input type="text" size="70" name="txtdownload" value="<?php echo $data['download'];?>"></td>
+                    <td>Link Fshare</td>
+                    <td><input type="text" size="70" name="txtfshare" value="<?php echo $data['fshare'];?>"></td>
+                   
+                </tr>
+                <tr>
+                    <td>Link 4share</td>
+                    <td><input type="text" size="70" name="txtshare4" value="<?php echo $data['share4'];?>"></td>
+                   
+                </tr>
+                <tr>
+                    <td>Link Crack fix</td>
+                    <td><input type="text" size="70" name="txtcrack" value="<?php echo $data['crack'];?>"></td>
                    
                 </tr>
                 <tr>
