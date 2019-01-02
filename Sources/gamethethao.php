@@ -93,50 +93,90 @@
             <!-- game list -->
         </div>
         <div class="row">
-                <?php
-                   require("config.php");
-                   $result=mysqli_query($conn , "select * from indexs where cate_id=18");
-                  while ($data=mysqli_fetch_assoc($result))
-                  {
-                   echo "<div class='col-md-4'>";
-                   echo "<br/>";
-                   echo " <img alt='Bootstrap Image Preview' src='$data[imagegame]' />";
-                   echo  "<a href='cod.php?idGame=$data[index_id]'>$data[title_game]</a>";
-                   echo "</div>";
-                  }
-                 mysqli_close($conn);
+            <?php
+                    require("config.php");
+                if(isset($_GET["begin"]))
+                    {
+                        $position=$_GET["begin"];
+                    }
+                else
+                    {
+                        $position=0;
+                    }
+                     $display=2;
+                    $result=mysqli_query($conn , "SELECT * FROM `indexs` where cate_id=18  limit $position,$display");
+                   while ($data=mysqli_fetch_assoc($result))
+                   { 
+                    echo "<div class='col-md-4'>";
+                    echo "<br/>";
+                    echo " <img alt='' src='$data[imagegame]' />";
+                    echo  "<a href='cod.php?idGame=$data[index_id]'>$data[title_game]</a>";
+                    echo "</div>";
+                   }
+                  mysqli_close($conn);
                 ?>
-        
         </div>
         <br>
         <br>
         <br>
         <div class="row">
             <div class="col-md-12">
-                <nav>
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="#">Previous</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="index.php">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">4</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">5</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
+                <?php
+    require("config.php");
+    $result=mysqli_query($conn,"SELECT * FROM `indexs` where cate_id=18");
+    $sum_indexs=mysqli_num_rows($result);
+    $sum_page=ceil($sum_indexs/$display);
+       echo" <nav>";
+       if ($sum_page>1)
+       {
+         echo" <ul class='pagination'>";
+        $current=($position/$display)+1;
+        if($current!=1)
+            {
+                $prev= $position-$display;
+                echo"<li class='page-item'>
+                    <a class='page-link' href='gamethethao.php?id=1&begin=$prev' >Previous</a>
+                     </li>";
+            }
+         for($page=1;$page<=$sum_page;$page++)
+             {
+                 $begin=($page-1)*$display;
+                 if ($page==$current)
+                 {
+                    echo"<li class='page-item'>
+                            <a class='page-link' href='gamethethao.php?id=1&begin=$begin' style='background-color:LightGray'>$page</a>
+                        </li>";
+                 }
+                 else
+                 {
+                    echo"<li class='page-item'>
+                    <a class='page-link' href='gamethethao.php?id=1&begin=$begin'>$page</a>
+                     </li>";
+                 }
+            }
+        if($current!=$sum_page)
+            {
+                $next=$position+$display;
+                echo"<li class='page-item'>
+                <a class='page-link' href='gamethethao.php?id=1&begin=$next'>Next</a>
+                 </li>"; 
+            }
+        echo"</ul>";
+        }
+        echo"</nav>";
+        mysqli_close($conn);
+        ?>
                 <hr>
+                <div>
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <address>
+                                <strong>Facebook, Inc. Đặng Khải Nguyễn Huy Đạt</strong><br /> Đại học Thuỷ Lợi, Tây
+                                Sơn<br />
+                                Quận Đống Đa, Thành phố Hà Nội<br /> <abbr title="Phone">Phone:</abbr> 0948434818
+                            </address>
+                        </div>
+                    </div>
+                </div>
                 <div>
