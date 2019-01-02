@@ -60,8 +60,9 @@
                                         </div>
                                     </li>
                                 </ul>
-                                <form class="form-inline">
-                                    <input class="form-control mr-sm-2" type="text" style="font-size :40px" />
+                                
+                                <form class="form-inline" action="search.php" method="get">
+                                    <input class="form-control mr-sm-2" type="text" style="font-size :40px" value="Nhập từ khoá để search" id="txtsearch" name="keyword"/>
                                     <button class="btn btn-primary my-2 my-sm-0" type="submit">
                                         Search
                                     </button>

@@ -10,7 +10,7 @@ require("header.php");
     <?php
  
     require("config.php");
-    $result=mysqli_query($conn , "select * from imageslide");
+    $result=mysqli_query($conn , "SELECT * FROM `imageslide` ORDER BY `imageslide`.`id` DESC");
 
 $data=mysqli_fetch_assoc($result);
 echo "<div class='col-md-12'>";
@@ -63,10 +63,20 @@ echo "<div class='carousel slide' id='carousel-916956'>";
 <!-- game list -->
 <div class="row">
 <?php
+                    echo "<p style='margin:20px 0 0 10px;text-align:center;'class='form-control mr-sm-2'>Các trò chơi mới nhất được cập nhật </p>";
                     require("config.php");
-                    $result=mysqli_query($conn , "select index_id,title_game,imagegame from indexs");
+                if(isset($_GET["begin"]))
+                    {
+                        $position=$_GET["begin"];
+                    }
+                else
+                    {
+                        $position=0;
+                    }
+                     $display=2;
+                    $result=mysqli_query($conn , "SELECT * FROM `indexs` ORDER BY `indexs`.`index_id` DESC limit $position,$display");
                    while ($data=mysqli_fetch_assoc($result))
-                   {
+                   { 
                     echo "<div class='col-md-4'>";
                     echo "<br/>";
                     echo " <img alt='' src='$data[imagegame]' />";
@@ -81,31 +91,51 @@ echo "<div class='carousel slide' id='carousel-916956'>";
 <br>
 <div class="row">
     <div class="col-md-12">
-        <nav>
-            <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#">Previous</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="index.php">1</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">4</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">5</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
+    <?php
+    require("config.php");
+    $result=mysqli_query($conn,"SELECT * FROM `indexs` ORDER BY `indexs`.`index_id` DESC");
+    $sum_indexs=mysqli_num_rows($result);
+    $sum_page=ceil($sum_indexs/$display);
+       echo" <nav>";
+       if ($sum_page>1)
+       {
+         echo" <ul class='pagination'>";
+        $current=($position/$display)+1;
+        if($current!=1)
+            {
+                $prev= $position-$display;
+                echo"<li class='page-item'>
+                    <a class='page-link' href='index.php?id=1&begin=$prev' >Previous</a>
+                     </li>";
+            }
+         for($page=1;$page<=$sum_page;$page++)
+             {
+                 $begin=($page-1)*$display;
+                 if ($page==$current)
+                 {
+                    echo"<li class='page-item'>
+                            <a class='page-link' href='index.php?id=1&begin=$begin' style='background-color:LightGray'>$page</a>
+                        </li>";
+                 }
+                 else
+                 {
+                    echo"<li class='page-item'>
+                    <a class='page-link' href='index.php?id=1&begin=$begin'>$page</a>
+                     </li>";
+                 }
+            }
+        if($current!=$sum_page)
+            {
+                $next=$position+$display;
+                echo"<li class='page-item'>
+                <a class='page-link' href='index.php?id=1&begin=$next'>Next</a>
+                 </li>"; 
+            }
+        echo"</ul>";
+        }
+        echo"</nav>";
+        mysqli_close($conn);
+        ?>
         <hr>
         <div>
             <div class="row">

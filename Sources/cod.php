@@ -10,7 +10,7 @@ require("header.php");
     < <?php
  
  require("config.php");
- $result=mysqli_query($conn , "select * from imageslide");
+ $result=mysqli_query($conn , "SELECT * FROM `imageslide` ORDER BY `imageslide`.`id` DESC");
 
 $data=mysqli_fetch_assoc($result);
 echo "<div class='col-md-12'>";
