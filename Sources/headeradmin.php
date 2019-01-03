@@ -60,6 +60,19 @@
         }
     }
     </script>
+    <script language="javascript">
+    function show_confirmcomment()
+    {
+        if(confirm("bạn có muốn xoá bình luận này không?"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    </script>
 </head>
 
 <body>

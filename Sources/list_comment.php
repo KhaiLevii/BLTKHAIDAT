@@ -13,30 +13,32 @@ require("headeradmin.php");
                 <th style="width:80px;">Kiểm duyệt</th>
                 <th style="width:80px;">Delete</th>
             </tr>
-            <tr >
-                <td>1</td>
-                <td>huydat58th1</td>
-                <td>Game cực hay ngàn like cho admin</td>
-                <td><a href="#" style="color:blue;">Xem</a></td>
-                <td><a href="#" style="color:blue;" >False</a></td>
-                <td><a href="#" style="color:blue;">Delete</a></td>
-            </tr>
-            <tr >
-            <td>2</td>
-                <td>domanhchinh58th1</td>
-                <td>Game cực hay ngàn like cho admin</td>
-                <td><a href="#" style="color:blue;">Xem</a></td>
-                <td><a href="#" style="color:blue;">False</a></td>
-                <td><a href="#" style="color:blue;">Delete</a></td>
-            </tr>
-            <tr >
-            <td>3</td>
-                <td>duongvutroll</td>
-                <td>Game cực hay ngàn like cho admin</td>
-                <td><a href="#" style="color:blue;">Xem</a></td>
-                <td><a href="#" style="color:blue;">False</a></td>
-                <td><a href="#" style="color:blue;">Delete</a></td>
-            </tr>
+            <?php
+        require("config.php");
+        $stt = 1;
+        $result = mysqli_query($conn,"SELECT `cm_id`,`name`,`message`,`cm_check`,`news_id` from `comment` order by `cm_id` DESC");
+        while  ($data = mysqli_fetch_assoc($result))
+        {
+           echo "<tr >";
+            echo    "<td>$stt</td>";
+            echo    "<td>$data[name]</td>";
+            echo    "<td>$data[message]</td>";
+            echo    "<td><a href='cod.php?idGame=$data[news_id]' target='_blank style='color:blue;'>Xem</a></td>";
+            if($data["cm_check"]=='N')
+            {
+            echo    "<td><a href='edit_cm.php?id=$data[cm_id]' style='color:blue;' >Chưa duyệt</a></td>";
+            }
+            else
+            {
+            echo    "<td><a href='edit_cm.php?id=$data[cm_id]' style='color:blue;' >Đã duyệt</a></td>";
+            }
+            echo    "<td><a href='delete_cm.php?id=$data[cm_id]' onclick='return show_confirmcomment()'; style='color:blue;'>Delete</a></td>";
+            echo "</tr>";
+            $stt++;
+        }
+        
+            mysqli_close($conn);
+        ?>
         </table>
     </div>
     <div id="bottom">Copyright &copy; by sharing game to you</div>

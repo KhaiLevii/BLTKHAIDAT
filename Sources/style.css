@@ -78,22 +78,3 @@ text-align: center;
   cursor: pointer;
   font-size: 12px;
 }
-*{padding:0;margin:0}
-
-.com-mess{height:80px;width:350px;}
-
-.com-name{height:20px;width:350px;}
-
-ul{list-style-type:none;}
-
-img{float:left;}
-
-li div{float:left;margin-left:3px;}
-
-ul li{clear:left;padding-top:15px;}
-
-li ul li{margin-left:52px;padding-top:10px;}
-
-.rep-mess textarea{height:50px;width:290px;}
-
-.rep-name input{height:18px;width:290px;}
