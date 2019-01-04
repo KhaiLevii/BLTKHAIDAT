@@ -44,7 +44,7 @@ if(isset($_POST["ok"]))
 <!-- slide show -->
 <div class="container">
 <div class="row">
-    < <?php
+<?php
  
  require("config.php");
  $result=mysqli_query($conn , "SELECT * FROM `imageslide` ORDER BY `imageslide`.`id` DESC");
@@ -164,18 +164,38 @@ mysqli_close($conn);
                        <span >$data[cauhinh]</span>                 
                         </div>";
                        echo "<div class='tab-pane' id='tab2'>";
-                            echo"<p style='font-size:20px;'>
-                        Fshare : <a href='$data[fshare]'>$data[fshare]</a>
-                        <br>
-                        <br>
-                        4share : <a href='$data[share4]'>$data[share4]</a>
-                        <br>
-                        <br>
+                       if (isset($_SESSION['username']))
+                            {
+                                    echo"<p style='font-size:20px;'
+                                    <br>
+                                    <br>
+                                    Fshare : <a href='$data[fshare]'>$data[fshare]</a>
+                                    <br>
+                                    <br>
+                                    4share : <a href='$data[share4]'>$data[share4]</a>
+                                    <br>
+                                    <br>
 
-                        <strong> Crack Fix</strong> : <a href='$data[crack]'>$data[crack]</a>
-                    </p>";
-                echo"</div>";
-                mysqli_close($conn);
+                                    <strong> Crack Fix</strong> : <a href='$data[crack]'>$data[crack]</a>
+                                    </p>";
+                            }
+                        else
+                            {
+                                    echo"<p style='font-size:20px;'
+                                    <br>
+                                    <br>          
+                                    Fshare : <a href='login.php'>Xin vui lòng đăng nhập thành viên để tải game</a>
+                                    <br>
+                                    <br>
+                                    4share : <a href='login.php'>Xin vui lòng đăng nhập thành viên để tải game</a>
+                                    <br>
+                                    <br>
+
+                                    <strong> Crack Fix</strong> : <a href='login.php'>Xin vui lòng đăng nhập thành viên để tải game</a>
+                                    </p>";
+                            }
+                        echo"</div>";
+                        mysqli_close($conn);
                 ?>
             </div>
             
@@ -184,19 +204,35 @@ mysqli_close($conn);
 </div>
 </div>
 </div>
-<div id="comment" style = "margin-left : 120px;margin-top : 100px;">
+<br>
+<hr>
+<div id="comment" style = "width:1000px;margin:20px auto:10px;margin-left:18%;padding:40px;">
 <fieldset>
 <legend><strong>Bình luận</strong></legend>
 <form action = "cod.php?idGame=<?php echo $idGame; ?>" method = "post">
 <table>
 <tr>
 <td> Họ tên </td>
-<td><input type="text" size ="25" name = "txtcodname" value = "<?php echo $loi['name']; ?>"/></td>
+<td><input type="text" size ="70" name = "txtcodname" value = "<?php echo $loi['name']; ?>"/></td>
 </tr>
 <tr>
-<td> Nội dung </td>
-<td><textarea cols = "60" rows="5" name = "txtcodmess" ><?php echo $loi['mess']; ?></textarea></td>
+
+<td>Nội dung</td>
+<td><textarea id="" cols="72" rows="5" name="txtcodmess"></textarea></td>
+
 </tr>
+<script>
+// Replace the <textarea id="editor1"> with a CKEditor
+// instance, using default configuration.
+CKEDITOR.replace( 'txtcodmess', {
+filebrowserBrowseUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/ckfinder.html',
+filebrowserImageBrowseUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/ckfinder.html?type=Images',
+filebrowserFlashBrowseUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/ckfinder.html?type=Flash',
+filebrowserUploadUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+filebrowserImageUploadUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+filebrowserFlashUploadUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+} ); 
+</script>
 <tr>
 <td></td>
 <td><input type="submit" value = "Đăng" name = "ok"></td>

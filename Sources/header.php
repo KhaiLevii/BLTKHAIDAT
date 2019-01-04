@@ -9,12 +9,24 @@
 <html lang="en">
 
 <head>
+    <script src="ckeditor/ckeditor.js"></script>
     <title>GAMES FOR YOU</title>
     <meta charset="utf-8">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script>
+        function detail(id, num) {
+            var newNum = num+1;
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "num_click.php?id="+id+"&num_c="+newNum, true);
+            xhttp.send();
+
+        } 
+
+    </script>
 </head>
 
 <body>
