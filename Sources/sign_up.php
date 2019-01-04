@@ -1,12 +1,10 @@
 <?php
 
 include('config.php');
-
 // Thông tin người dùng
 $username = $_POST["username"];
 $password = $_POST["password"];
 $email = $_POST["email"];
-
 function generate_token() {
     return md5(microtime().mt_rand());
 }
@@ -20,10 +18,18 @@ function generate_token() {
 $salt = generate_token();
 // $hash = password_hash($password, PASSWORD_DEFAULT, $options);
 
-
+$result1=mysqli_query($conn, "SELECT * from users where username='$username'");
+if (mysqli_num_rows($result1)==0)
 // Chèn dữ liệu vào
-$sql = "INSERT INTO users(username, password, email, salt, level, status) VALUES ('$username', '$password', '$email', '$salt', '1', '0')";
-$result = mysqli_query($conn, $sql);
+    {
+        $sql = "INSERT INTO users(username, password, email, salt, level, status) VALUES ('$username', '$password', '$email', '$salt', '1', '0')";
+        $result = mysqli_query($conn, $sql);
+    }
+else
+    {
+      echo"<h1 style='text-align:center;'>Tên tài khoản đã tồn tai.Xin mời bạn đăng kí lại</h1>";
+      echo"<a href='register.php'>Ấn vào đây để trở về trang đăng ký.Thông cảm trang web chưa được hoàn thiện</a>";
+    }
 
 
 // Nếu thành công, gửi mail xác nhận
@@ -51,5 +57,4 @@ else {
     echo "Không thể gửi mail";
 }
 mysqli_close($conn);
-
 ?>
