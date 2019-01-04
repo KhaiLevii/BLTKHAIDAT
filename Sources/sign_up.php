@@ -54,7 +54,7 @@ if($sentmail){
     echo"<a href='login.php'> (-Đăng nhập-)</a>";
 }
 else {
-    echo "Không thể gửi mail";
+        echo "Không thể gửi mail";
 }
 mysqli_close($conn);
 ?>

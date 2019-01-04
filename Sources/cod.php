@@ -43,65 +43,59 @@ if(isset($_POST["ok"]))
 
 <!-- slide show -->
 <div class="container">
-<div class="row">
-<?php
+    <div class="row">
+        <div class="col-md-12">
+            <div class="carousel slide" id="carousel-46166">
+                <ol class="carousel-indicators">
+                    <li data-slide-to="0" data-target="#carousel-46166" class="active">
+                    </li>
+                    <li data-slide-to="1" data-target="#carousel-46166" >
+                    </li>
+                    <li data-slide-to="2" data-target="#carousel-46166" >
+                    </li>
+                </ol>
+                <div class="carousel-inner">
+                    <?php
  
- require("config.php");
- $result=mysqli_query($conn , "SELECT * FROM `imageslide` ORDER BY `imageslide`.`id` DESC");
-
-$data=mysqli_fetch_assoc($result);
-echo "<div class='col-md-12'>";
-echo "<div class='carousel slide' id='carousel-916956'>";
-echo    "<ol class='carousel-indicators'>
-        <li data-slide-to='0' data-target='#carousel-916956'>
-        </li>
-        <li data-slide-to='1' data-target='#carousel-916956' class='active'>
-        </li>
-        <li data-slide-to='2' data-target='#carousel-916956' class='active'>
-        </li>
-      
-    </ol> ";
-
- echo "<div class='carousel slide' id='carousel-916956'>";
- echo    "<ol class='carousel-indicators'>
-         <li data-slide-to='0' data-target='#carousel-916956'>
-         </li>
-         <li data-slide-to='1' data-target='#carousel-916956' class='active'>
-         </li>
-         <li data-slide-to='2' data-target='#carousel-916956' class='active'>
-         </li>
-       
-     </ol> ";
-          echo "<div class='carousel-inner'>";
-          
-          echo "<div class='carousel-item active'>
-          <a href='cod.php?idGame=$data[index_id]'>
-              <img class='d-block w-100' alt='Carousel Bootstrap First' src='$data[image]' />
-          </a>
-
-      </div>";
-     echo "</div> <a class='carousel-control-prev' href='#carousel-916956' data-slide='prev'><span class='carousel-control-prev-icon'></span>
-     <span class='sr-only'>Previous</span></a> <a class='carousel-control-next' href='#carousel-916956'
-     data-slide='next'><span class='carousel-control-next-icon'></span> <span class='sr-only'>Next</span></a>
-</div>";
- echo "</div>";
- echo "</div>";
-  echo "</div>";
-
-
- 
-
-mysqli_close($conn);
- ?>
-</div>
+                            require("config.php");
+                            $result=mysqli_query($conn , "SELECT * FROM `imageslide` ORDER BY `imageslide`.`id` DESC limit 0,3");
+                            $count = 1;
+                           while ($data=mysqli_fetch_assoc($result))
+                           {    if ($count == 1) {
+                                echo"
+                                <div class='carousel-item active'>
+                                    <a href='cod.php?idGame=$data[index_id]'>
+                                        <img class='d-block w-100' alt='Carousel Bootstrap First' src='$data[image]' />
+                                    </a>
+                                </div>
+                                ";
+                                } else {
+                                    echo"
+                                    <div class='carousel-item'>
+                                        <a href='cod.php?idGame=$data[index_id]'>
+                                            <img class='d-block w-100' alt='Carousel Bootstrap First' src='$data[image]' />
+                                        </a>
+                                    </div>
+                                    ";
+                                }
+                                $count++;
+                           }
+                           mysqli_close($conn);
+                    ?>
+                </div> <a class="carousel-control-prev" href="#carousel-46166" data-slide="prev"><span class="carousel-control-prev-icon"></span>
+                    <span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#carousel-46166"
+                    data-slide="next"><span class="carousel-control-next-icon"></span> <span class="sr-only">Next</span></a>
+            </div>
+        </div>
+    </div>
 </div>
 <br>
 <br>
-<br> 
+<br>
 <!--title-->
 <div class="container">
-<div class="row">
-<?php
+    <div class="row">
+        <?php
     require("config.php");
     $result=mysqli_query($conn ,"select * from news where index_id='$_GET[idGame]'");
     $data=mysqli_fetch_assoc($result);
@@ -114,15 +108,15 @@ mysqli_close($conn);
     echo "</div>";
     mysqli_close($conn);
     ?>
-</div>
+    </div>
 </div>
 <br>
 <br>
 <br>
 <!-- nhung link youtube -->
 <div class="container">
-<div class="row">
-<?php
+    <div class="row">
+        <?php
     require("config.php");
     $result=mysqli_query($conn ,"select * from news where index_id='$_GET[idGame]'");
     $data=mysqli_fetch_assoc($result);
@@ -136,7 +130,7 @@ mysqli_close($conn);
     echo"</div>";
     mysqli_close($conn);
     ?>
-</div>
+    </div>
 </div>
 <br>
 <br>
@@ -144,17 +138,17 @@ mysqli_close($conn);
 <!-- grid -->
 <div class="container">
 
-        <div class="tabbable" id="tabs-886087">
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#tab1" data-toggle="tab">Cấu hình</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#tab2" data-toggle="tab">Download</a>
-                </li>
-            </ul>
-            <div class="tab-content">
-                <?php
+    <div class="tabbable" id="tabs-886087">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="#tab1" data-toggle="tab">Cấu hình</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#tab2" data-toggle="tab">Download</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <?php
                 
                             
                         require("config.php");
@@ -169,14 +163,14 @@ mysqli_close($conn);
                                     echo"<p style='font-size:20px;'
                                     <br>
                                     <br>
-                                    Fshare : <a href='$data[fshare]'>$data[fshare]</a>
+                                    Fshare : <a href='$data[fshare]'>Click vào đây để tải game</a>
                                     <br>
                                     <br>
-                                    4share : <a href='$data[share4]'>$data[share4]</a>
+                                    4share : <a href='$data[share4]'>Click vào đây để tải game</a>
                                     <br>
                                     <br>
 
-                                    <strong> Crack Fix</strong> : <a href='$data[crack]'>$data[crack]</a>
+                                    <strong> Crack Fix</strong> : <a href='$data[crack]'>Click vào đây để tải game</a>
                                     </p>";
                             }
                         else
@@ -197,53 +191,53 @@ mysqli_close($conn);
                         echo"</div>";
                         mysqli_close($conn);
                 ?>
-            </div>
-            
         </div>
+
     </div>
+</div>
 </div>
 </div>
 </div>
 <br>
 <hr>
-<div id="comment" style = "width:1000px;margin:20px auto:10px;margin-left:18%;padding:40px;">
-<fieldset>
-<legend><strong>Bình luận</strong></legend>
-<form action = "cod.php?idGame=<?php echo $idGame; ?>" method = "post">
-<table>
-<tr>
-<td> Họ tên </td>
-<td><input type="text" size ="70" name = "txtcodname" value = "<?php echo $loi['name']; ?>"/></td>
-</tr>
-<tr>
+<div id="comment" style="width:1000px;margin:20px auto:10px;margin-left:18%;padding:40px;">
+    <fieldset>
+        <legend><strong>Bình luận</strong></legend>
+        <form action="cod.php?idGame=<?php echo $idGame; ?>" method="post">
+            <table>
+                <tr>
+                    <td> Họ tên </td>
+                    <td><input type="text" size="70" name="txtcodname" value="<?php echo $loi['name']; ?>" /></td>
+                </tr>
+                <tr>
 
-<td>Nội dung</td>
-<td><textarea id="" cols="72" rows="5" name="txtcodmess"></textarea></td>
+                    <td>Nội dung</td>
+                    <td><textarea id="" cols="72" rows="5" name="txtcodmess"></textarea></td>
 
-</tr>
-<script>
-// Replace the <textarea id="editor1"> with a CKEditor
-// instance, using default configuration.
-CKEDITOR.replace( 'txtcodmess', {
-filebrowserBrowseUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/ckfinder.html',
-filebrowserImageBrowseUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/ckfinder.html?type=Images',
-filebrowserFlashBrowseUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/ckfinder.html?type=Flash',
-filebrowserUploadUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-filebrowserImageUploadUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-filebrowserFlashUploadUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
-} ); 
-</script>
-<tr>
-<td></td>
-<td><input type="submit" value = "Đăng" name = "ok"></td>
-</tr>
-</table>
+                </tr>
+                <script>
+                    // Replace the <textarea id="editor1"> with a CKEditor
+                    // instance, using default configuration.
+                    CKEDITOR.replace('txtcodmess', {
+                        filebrowserBrowseUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/ckfinder.html',
+                        filebrowserImageBrowseUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/ckfinder.html?type=Images',
+                        filebrowserFlashBrowseUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/ckfinder.html?type=Flash',
+                        filebrowserUploadUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                        filebrowserImageUploadUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                        filebrowserFlashUploadUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+                    }); 
+                </script>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Đăng" name="ok"></td>
+                </tr>
+            </table>
 
- </form>
-</fieldset>
+        </form>
+    </fieldset>
 </div>
-<div id = "show-comment" style = "margin-left : 120px;margin-top : 40px;">
-<?php
+<div id="show-comment" style="margin-left : 120px;margin-top : 40px;">
+    <?php
     require("config.php");
     $result3 = mysqli_query($conn,"select name,message,time from comment where cm_check='Y' and news_id = $idGame ");
     while($data3 = mysqli_fetch_assoc($result3))
@@ -266,7 +260,7 @@ filebrowserFlashUploadUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/cked
 <hr>
 <h1 style="text-align:center;height:50px;">Game cùng thể loại</h1>
 <div class="row">
-                <?php
+    <?php
                     require("config.php");
                     $result=mysqli_query($conn , "select * from indexs where cate_id=$data[cate_id]");
                    while ($data=mysqli_fetch_assoc($result))
@@ -279,8 +273,8 @@ filebrowserFlashUploadUrl: 'http://localhost:81/dangkhai/BTLKHAIDAT/Sources/cked
                    }
                   mysqli_close($conn);
                 ?>
-        
-        </div>
+
+</div>
 <hr>
 <div>
     <div class="row">
